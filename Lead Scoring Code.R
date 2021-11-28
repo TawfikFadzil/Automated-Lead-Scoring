@@ -1,4 +1,4 @@
-#+eval=FALSE
+### Predictive Lead Scoring using Logistic Regression with Stepwise Selections
 
 library(ggplot2)
 library(glmnet)
@@ -60,7 +60,7 @@ winsor <- function(x, multiplier) {
   y
 }
 
-#winsorizing data for total visits
+#Winsorizing data for total visits
 lead$Total_Visits <- winsor(lead$Total_Visits, 1.5)
 lead$Page_Views_Per_Visit <- winsor(lead$Page_Views_Per_Visit, 1.5)
 
@@ -92,7 +92,6 @@ stepwise.lead$anova
 #Perform backward stepwise regression
 backward.lead <- step(lead.full, direction='backward', scope=formula(lead.full), trace=0)
 backward.lead$anova
-
 
 # Predict on test dataset for lead full
 library(caret)
